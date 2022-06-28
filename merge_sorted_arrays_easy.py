@@ -14,29 +14,33 @@ from array import array
 
 
 def merge_sorted_arrays(arr1, arra2):
-    m = len(arra2)
-    n = len(arr1)
+    m = len(arr1)
+    n = len(arra2)
     arra3 = [None] * (m + n)
     i = 0
     j = 0
     k = 0
-    for i in range(len(arr1)):
-        counter = 0
-        while counter < len(arr2):
-            if arr1[i] > arr2[counter]:
-                temp = arr1[i]
-                arr1[i] = arr2[counter]
-                arr2[counter] = temp
-            # else:
-            #     temp = arra2[counter]
-            #     arra2[counter] = arr1[i]
-            #     arr1[i] = temp
-            counter = counter + 1
-            
+    while(i<m and j < n):
+        if(arr1[i]<=arr2[j]):
+            arra3[k] = arr1[i]
+            i = i + 1
+            k = k + 1
+        else:
+            arra3[k] = arr2[j]
+            j = j + 1
+            k = k + 1
+        
+    while (i<m):
+        arra3[k] = arr1[i]
+        i = i + 1
+        k = k + 1
+    while (j<n):
+        arra3[k] = arr2[j]
+        j = j + 1
+        k = k + 1
 
-    arr1.sort()
-    arr2.sort()
-    return arr1 + arr2 if arra2[0] > arr1[-1] else arra2 + arr1
+    return arra3 
+
 
 
 arr2 = [10,22,33,40,58] 
