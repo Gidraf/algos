@@ -1,3 +1,5 @@
 start.sh
 venv/*
 ubuntu-sf/*
+*/venv/*
+venv/*
