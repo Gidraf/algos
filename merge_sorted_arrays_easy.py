@@ -9,43 +9,33 @@ Output: arr3[] = {4, 5, 7, 8, 8, 9}
 
 """
 
+# Divice and Conqur
 
-from array import array
 
-
-def merge_sorted_arrays(arr1, arra2):
+def merge_sorted_arrays_of_different_size(arr1, arra2):
     m = len(arr1)
     n = len(arra2)
     arra3 = [None] * (m + n)
     i = 0
     j = 0
     k = 0
-    while(i<m and j < n):
-        if(arr1[i]<=arr2[j]):
+    while(i + j  < m + n):
+        if(j != n and (i == m or arr1[i] > arr2[j])):
+            arra3[k] = arr2[j]
+            k = k + 1
+            j = j + 1
+        else:
             arra3[k] = arr1[i]
             i = i + 1
             k = k + 1
-        else:
-            arra3[k] = arr2[j]
-            j = j + 1
-            k = k + 1
-        
-    while (i<m):
-        arra3[k] = arr1[i]
-        i = i + 1
-        k = k + 1
-    while (j<n):
-        arra3[k] = arr2[j]
-        j = j + 1
-        k = k + 1
 
     return arra3 
 
 
 
-arr2 = [10,22,33,40,58] 
-arr1 = [600,700,800,900,9001]
+arr1 = [10, 40,30] 
+arr2 = [1]
 
-sorted_array = merge_sorted_arrays(arr1, arr2)
+sorted_array = merge_sorted_arrays_of_different_size(arr1, arr2)
 
 print(sorted_array)
